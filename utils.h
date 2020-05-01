@@ -1,7 +1,7 @@
 #ifndef UTILS_H_INCLUDED
     #define UTILS_H_INCLUDED  
     #include <iostream>
-    #include <tree.h>
+    #include <amicayse/tree.h>
 
     namespace amicayse
     {
@@ -56,7 +56,7 @@
                 else
                     std::cout<<root->nonTerminal<<std::endl;
 
-                for (std::vector<marlex::TreeNode*>::iterator i = root->children.begin(); i != root->children.end(); ++i){
+                for (std::vector<TreeNode*>::iterator i = root->children.begin(); i != root->children.end(); ++i){
                     print_preorder((ParseTreeNode*)(*i), level+1);
                 }
             }
