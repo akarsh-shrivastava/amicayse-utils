@@ -16,7 +16,7 @@ FILES="*.h"
 
 
 INSTALL_INCLUDE="$HOME/.amicayse/include"
-
+INSTALL_LIB="$HOME/.amicayse/lib"
 
 install(){
 	$DIREXISTS $INSTALL_INCLUDE || $MKDIR $INSTALL_INCLUDE/amicayse
@@ -25,10 +25,19 @@ install(){
 	if [[ $? != 0 ]]; then
 		echo "export CPATH=$INSTALL_INCLUDE:$CPATH" >> $HOME/.bashrc
 	fi
+
+	$DIREXISTS $INSTALL_LIB || $MKDIR $INSTALL_LIB
+	echo $LD_LIBRARY_PATH | grep -q $INSTALL_LIB
+	if [[ $? != 0 ]]; then
+		echo "export LD_LIBRARY_PATH=$INSTALL_LIB$LD_LIBRARY_PATH" >> $HOME/.bashrc
+	fi
+
+	$DIREXISTS $INSTALL_LIB || $MKDIR $INSTALL_LIB
+	echo $LIBRARY_PATH | grep -q $INSTALL_LIB
+	if [[ $? != 0 ]]; then
+		echo "export LIBRARY_PATH=$INSTALL_LIB$LIBRARY_PATH" >> $HOME/.bashrc
+	fi
 }
-	#ifeq (RES, 0)
-	#	export CPATH=$(INSTALL_INCLUDE):$(CPATH)
-	#endif
 
 
 update(){
