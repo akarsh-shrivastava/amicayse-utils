@@ -15,7 +15,10 @@
 
             Token(TokenType tok, std::string lex, int l) : type(tok), lexeme(lex), line(l) {}
             void print() {
-                std::cout<<((lexeme=="\n")?"\\n":lexeme);
+                std::cout<<((lexeme=="\n")?"\\n":lexeme)<<"\t"<<type<<"\t"<<line;
+            }
+            void println() {
+                std::cout<<((lexeme=="\n")?"\\n":lexeme)<<"\t"<<type<<"\t"<<line<<"\n";
             }
             void operator=(Token const &t){
                 this->type = t.type;
